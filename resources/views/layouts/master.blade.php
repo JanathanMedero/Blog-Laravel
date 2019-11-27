@@ -10,6 +10,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- FontAwesome -->
+    <link href="{{ asset('argon/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
+
 	<title>@yield('title')</title>
 </head>
 <body>

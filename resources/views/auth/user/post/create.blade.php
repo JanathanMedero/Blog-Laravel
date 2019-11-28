@@ -7,6 +7,7 @@ Nuevo Post
 @section('content')
 <div class="container-fluid mt--7">
 	<div class="row">
+		@include('partials.alerts')
 		<div class="col-md-12 mb-4">
 			<div class="card bg-secondary shadow">
 				<div class="card-header bg-white border-0">
@@ -17,7 +18,8 @@ Nuevo Post
 					</div>
 				</div>
 				<div class="card-body">
-					<form>
+					<form action="{{ route('post.store') }}" method="POST">
+						@csrf
 						<h6 class="heading-small text-muted mb-4">Ingrese los datos del post</h6>
 						<div class="pl-lg-4">
 							<div class="row">
@@ -30,8 +32,11 @@ Nuevo Post
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="category">Categoría</label>
-										<select class="form-control form-control-alternative" id="category">
+										<select class="form-control form-control-alternative" id="category" name="category">
 										  <option>Seleccione una opción</option>
+										  @foreach($categories as $category)
+										  <option value="{{ $category->id }}">{{ $category->name }}</option>
+										  @endforeach
 										</select>
 									</div>
 								</div>

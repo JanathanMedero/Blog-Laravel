@@ -15,7 +15,7 @@
 	<link href="{{ asset('argon/css/argon-dashboard.css?v=1.1.0') }}" rel="stylesheet" />
 	<!-- extra css -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
-	
+
 	<title>@yield('title')</title>
 </head>
 <body>
@@ -114,17 +114,17 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link active" href="{{ route('profile', $user->slug) }}">
+					<a class="nav-link {{ request()->is('profile/'.$user->slug) ? 'active' : '' }}" href="{{ route('profile', $user->slug) }}">
 						<i class="fas fa-user text-yellow"></i> Perfil
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class=" nav-link " href="{{ route('post.create') }}"> <i class="fas fa-bookmark text-primary"></i> Nuevo Post
+					<a class=" nav-link {{ request()->is('profile/new-post') ? 'active' : '' }}" href="{{ route('post.create') }}"> <i class="fas fa-bookmark text-primary"></i> Nuevo Post
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link " href="../examples/icons.html">
-						<i class="ni ni-planet text-blue"></i> Icons
+					<a class="nav-link {{ request()->is('profile/'.$user->slug.'/posts') ? 'active' : '' }}" href="{{ route('post.index', $user->slug) }}">
+						<i class="fas fa-folder-open text-blue"></i> Mis posts
 					</a>
 				</li>
 				<li class="nav-item">

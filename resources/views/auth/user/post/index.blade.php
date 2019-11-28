@@ -38,7 +38,7 @@ Mis Posts
 								<td class="budget">
 									<div class="row">
 										<div class="col-md-12">
-											<button class="btn btn-primary"><i class="fas fa-cogs"></i> Editar</button>
+											<a href="{{ route('post.edit', $post->slug) }}" class="btn btn-primary"><i class="fas fa-cogs"></i> Editar</a>
 											<button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</button>
 										</div>
 									</div>

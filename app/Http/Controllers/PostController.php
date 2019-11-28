@@ -71,9 +71,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $categories = Category::orderBy('name')->get();
+
+        $post = Post::where('slug', $slug)->first();
+
+        return view('auth.user.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -83,9 +87,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $post = Post::where('slug', $slug)->first();
+
+        $post->user_id = Auth::user()->id;
+        $post->category_id = $request->category;
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title);
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect()->route('post.index', Auth::user()->slug)->with('success', 'Post actualizado correctamente');
     }
 
     /**

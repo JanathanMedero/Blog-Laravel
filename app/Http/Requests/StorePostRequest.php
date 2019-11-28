@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePostRequest extends FormRequest
@@ -23,8 +24,20 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
+        $slug = $this->route()->parameter('slug');
+
+        $post = Post::where('slug', $slug)->first();
+
+        if ($post) {
+            return [
+                'title'     => 'required|min:5|unique:posts,title,'.$post->id,
+                'category'  => 'required',
+                'body'      => 'required|min:10',
+            ];
+        }
+
         return [
-            'title'     => 'required|unique:posts|min:5',
+            'title'     => 'required|min:5|unique:posts',
             'category'  => 'required',
             'body'      => 'required|min:10',
         ];

@@ -21,6 +21,7 @@
 					<form action="{{ route('post.update', $post->slug) }}" method="POST">
 						@method('PUT')
 						@csrf
+						<input type="hidden" name="user[id]" value="{{ Auth::user()->id }}">
 						<h6 class="heading-small text-muted mb-4">Ediacion del post</h6>
 						<div class="pl-lg-4">
 							<div class="row">

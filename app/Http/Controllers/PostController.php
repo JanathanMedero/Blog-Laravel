@@ -8,6 +8,8 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\StorePostRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -87,7 +89,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(StorePostRequest $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
 

@@ -17,10 +17,10 @@
 				@else
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-white" href="#" id="dropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						{{ Auth::user()->name }}
+						{{ $user->name }}
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropDown">
-						<a class="dropdown-item" href="{{ route('profile', Auth::user()->slug) }}">Mi perfil</a>
+						<a class="dropdown-item" href="{{ route('profile', $user->slug) }}">Mi perfil</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="{{ route('logout') }}"
 						onclick="event.preventDefault();document.getElementById('logout').submit();">

@@ -112,11 +112,11 @@
 			<ul class="navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link active" href="../examples/profile.html">
-						<i class="ni ni-single-02 text-yellow"></i> User profile
+						<i class="fas fa-user text-yellow"></i> Perfil
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class=" nav-link " href=" ../index.html"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+					<a class=" nav-link " href="{{ route('post.create') }}"> <i class="fas fa-bookmark text-primary"></i> Nuevo Post
 					</a>
 				</li>
 				<li class="nav-item">
@@ -213,8 +213,8 @@
 							<span>Cerrar sesión</span>
 						</a>
 						<form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-	                        @csrf
-	                    </form>
+							@csrf
+						</form>
 					</div>
 				</li>
 			</ul>
@@ -225,108 +225,9 @@
 	<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 350px; background-image: url({{ asset('images/profile.svg')  }}); background-size: cover; background-position: center top;">
 		<!-- Mask -->
 		<span class="mask bg-gradient-default opacity-8"></span>
-
 	</div>
-	<!-- Page content -->
-	<div class="container-fluid mt--7">
-		<div class="row">
-			<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-				<div class="card card-profile shadow">
-					<div class="row justify-content-center">
-						<div class="col-lg-3 order-lg-2">
-							<div class="card-profile-image">
-								<a href="#">
-									<img src="{{ asset('images/'.$user->avatar) }}" class="rounded-circle">
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-					</div>
-					<div class="card-body pt-0 pt-md-4">
-						<div class="row">
-							<div class="col">
-								<div class="card-profile-stats d-flex justify-content-center mt-md-5">
-									<div>
-										<span class="heading">22</span>
-										<span class="description">Friends</span>
-									</div>
-									<div>
-										<span class="heading">10</span>
-										<span class="description">Photos</span>
-									</div>
-									<div>
-										<span class="heading">89</span>
-										<span class="description">Comments</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-8 order-xl-1">
-				<div class="card bg-secondary shadow">
-					<div class="card-header bg-white border-0">
-						<div class="row align-items-center">
-							<div class="col-8">
-								<h3 class="mb-0">Mi perfil</h3>
-							</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<form>
-							<h6 class="heading-small text-muted mb-4">Información</h6>
-							<div class="pl-lg-4">
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label class="form-control-label" for="input-username">Nombre de usuario</label>
-											<input type="text" id="input-username" class="form-control form-control-alternative" value="{{ $user->name }}">
-										</div>
-									</div>
-									<div class="col-lg-6">
-										<div class="form-group">
-											<label class="form-control-label" for="input-email">Correo electrónico</label>
-											<input type="email" id="input-email" class="form-control form-control-alternative" value="{{ $user->email }}">
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Footer -->
-		<footer class="footer">
-			<div class="row align-items-center justify-content-xl-between">
-				<div class="col-xl-6">
-					<div class="copyright text-center text-xl-left text-muted">
-						&copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<ul class="nav nav-footer justify-content-center justify-content-xl-end">
-						<li class="nav-item">
-							<a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-						</li>
-						<li class="nav-item">
-							<a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-						</li>
-						<li class="nav-item">
-							<a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-						</li>
-						<li class="nav-item">
-							<a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</footer>
-	</div>
+	@yield('content')
 </div>
-@yield('content')
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

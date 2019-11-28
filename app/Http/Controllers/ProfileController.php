@@ -9,8 +9,6 @@ class ProfileController extends Controller
 {
     public function __invoke($slug)
     {
-    	$user = User::where('slug', $slug)->first();
-
-    	return view('auth.user.profile', compact('user'));
+    	return view('auth.user.profile');
     }
 }

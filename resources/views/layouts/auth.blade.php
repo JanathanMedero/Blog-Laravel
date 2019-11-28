@@ -13,6 +13,9 @@
 	<link href="{{ asset('argon/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
 	<!-- CSS Files -->
 	<link href="{{ asset('argon/css/argon-dashboard.css?v=1.1.0') }}" rel="stylesheet" />
+	<!-- extra css -->
+	<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+	
 	<title>@yield('title')</title>
 </head>
 <body>
@@ -111,7 +114,7 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link active" href="../examples/profile.html">
+					<a class="nav-link active" href="{{ route('profile', $user->slug) }}">
 						<i class="fas fa-user text-yellow"></i> Perfil
 					</a>
 				</li>
@@ -229,5 +232,6 @@
 	@yield('content')
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
+@yield('extra-js')
 </body>
 </html>

@@ -6,8 +6,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function(){
 
-	Route::get('profile/{slug}', 'ProfileController')->name('profile');
 	Route::get('profile/new-post', 'PostController@create')->name('post.create');
+	Route::get('profile/{slug}', 'ProfileController')->name('profile');
 
 });
 

@@ -24,9 +24,9 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|unique:posts',
+            'title'     => 'required|unique:posts|min:5',
             'category'  => 'required',
-            'body'      => 'required|min:5',
+            'body'      => 'required|min:10',
         ];
     }
 
@@ -35,9 +35,10 @@ class StorePostRequest extends FormRequest
         return [
             'title.required' => 'Ingrese el titulo del post',
             'title.unique' => 'Este post ya existe',
+            'title.min' => 'El titulo del post debe tener al menos 5 caracteres',
             'category.required' => 'Seleccione una categoría',
             'body.required' => 'Ingrese el contenido del post',
-            'body.min' => 'El contenido del post debe tener al menos 5 caracteres',
+            'body.min' => 'El contenido del post debe tener al menos 10 caracteres',
         ];
     }
 }

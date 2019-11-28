@@ -26,7 +26,7 @@ Nuevo Post
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="post-title">Titulo del post</label>
-										<input type="text" id="post-title" class="form-control form-control-alternative" placeholder="Ingrese el titulo del post" name="title">
+										<input type="text" id="post-title" class="form-control form-control-alternative" placeholder="Ingrese el titulo del post" name="title" value="{{ old('title') }}">
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -35,7 +35,7 @@ Nuevo Post
 										<select class="form-control form-control-alternative" id="category" name="category">
 										  <option disabled selected>Seleccione una opción</option>
 										  @foreach($categories as $category)
-										  <option value="{{ $category->id }}">{{ $category->name }}</option>
+										  <option {{ old('category') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
 										  @endforeach
 										</select>
 									</div>

@@ -12,8 +12,8 @@
 
 @if ($errors->any())
 <div class="col-md-12">
-	<div class="alert alert-info alert-dismissible fade show" role="alert">
-		<span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<span class="alert-inner--icon"><i class="fas fa-times"></i></span>
 		<span class="alert-inner--text"><strong>Error!</strong> {{ session('danger') }}</span>
 		<ul>
 			@foreach ($errors->all() as $error)

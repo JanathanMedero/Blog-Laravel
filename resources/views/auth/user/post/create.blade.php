@@ -33,7 +33,7 @@ Nuevo Post
 									<div class="form-group">
 										<label class="form-control-label" for="category">Categoría</label>
 										<select class="form-control form-control-alternative" id="category" name="category">
-										  <option>Seleccione una opción</option>
+										  <option disabled selected>Seleccione una opción</option>
 										  @foreach($categories as $category)
 										  <option value="{{ $category->id }}">{{ $category->name }}</option>
 										  @endforeach

@@ -16,6 +16,8 @@
 	<!-- extra css -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
 
+	@yield('extra-css')
+
 	<title>@yield('title')</title>
 </head>
 <body>
@@ -46,7 +48,7 @@
 					<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<div class="media align-items-center">
 							<span class="avatar avatar-sm rounded-circle">
-								<img alt="Image placeholder" src="{{ asset('images/'.$user->avatar) }}">
+								<img alt="Image placeholder" src="{{ asset($user->avatar) }}">
 							</span>
 						</div>
 					</a>
@@ -183,7 +185,7 @@
 					<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<div class="media align-items-center">
 							<span class="avatar avatar-sm rounded-circle">
-								<img alt="Image placeholder" src="{{ asset('images/'.$user->avatar) }}">
+								<img alt="Image placeholder" src="{{ asset($user->avatar) }}">
 							</span>
 							<div class="media-body ml-2 d-none d-lg-block">
 								<span class="mb-0 text-sm  font-weight-bold">{{ $user->name }}</span>

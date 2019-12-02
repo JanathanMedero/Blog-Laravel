@@ -1,0 +1,5 @@
+#preview {
+  max-width:250px;
+}
+
+#preview img {width:100%;display:block;}

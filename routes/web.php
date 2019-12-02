@@ -15,6 +15,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	//Profile
 	Route::get('profile/{slug}', 'ProfileController')->name('profile');
+	Route::put('profile/{slug}/image-updated', 'ImageController')->name('profile.image.update');
 
 
 

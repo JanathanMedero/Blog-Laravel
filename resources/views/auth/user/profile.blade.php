@@ -9,9 +9,9 @@ Perfil de {{ $user->name }}
 @endsection
 
 @section('content')
-
 <div class="container-fluid mt--7">
 	<div class="row">
+		@include('partials.alerts')
 		<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
 			<div class="card card-profile shadow">
 				<div class="row justify-content-center">
@@ -28,7 +28,10 @@ Perfil de {{ $user->name }}
 				<div class="card-body pt-0 pt-md-4">
 					<div class="row">
 						<div class="col d-flex justify-content-center mt-md-6">
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changeImage">Cambiar imágen de perfil</button>
+							<button type="button" class="btn btn-icon btn-3 btn-primary" data-toggle="modal" data-target="#changeImage">
+							<span class="btn-inner--icon"><i class="fas fa-user"style="top: 0px;"></i></span>
+							<span class="btn-inner--text">Cambiar imágen de perfil</span>
+							</button>
 							<!-- Modal -->
 							<div class="modal fade" id="changeImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">
@@ -45,7 +48,7 @@ Perfil de {{ $user->name }}
 											<div class="modal-body">
 												<div class="form-group">
 													<label for="Image">Seleccione una imágen</label>
-													<input type="file" class="form-control-file" id="Image" name="avatar">
+													<input type="file" class="form-control-file" id="Image" name="avatar" required>
 												</div>
 												<div class="row">
 													<div class="col-md-4">
@@ -85,24 +88,37 @@ Perfil de {{ $user->name }}
 						<div class="col-8">
 							<h3 class="mb-0">Mi perfil</h3>
 						</div>
+						<div class="col-4 d-flex justify-content-end">
+							<button class="btn btn-icon btn-3 btn-danger btn-sm" type="button">
+							    <span class="btn-inner--text">Cambiar contraseña</span>
+								<span class="btn-inner--icon"><i class="fas fa-key" style="top: 0px;"></i></span>
+							</button>
+						</div>
 					</div>
 				</div>
 				<div class="card-body">
-					<form>
+					<form action="{{ route('user.update', $user->slug) }}" method="POST">
+						@csrf
+						@method('PUT')
 						<h6 class="heading-small text-muted mb-4">Información</h6>
 						<div class="pl-lg-4">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="input-username">Nombre de usuario</label>
-										<input type="text" id="input-username" class="form-control form-control-alternative" value="{{ $user->name }}">
+										<input type="text" id="input-username" name="name" class="form-control form-control-alternative" value="{{ $user->name }}">
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label class="form-control-label" for="input-email">Correo electrónico</label>
-										<input type="email" id="input-email" class="form-control form-control-alternative" value="{{ $user->email }}">
+										<input type="email" id="input-email" class="form-control form-control-alternative" value="{{ $user->email }}" name="email">
 									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<button type="submit" class="btn btn-primary btn-block">Guardar cambios</button>
 								</div>
 							</div>
 						</div>
